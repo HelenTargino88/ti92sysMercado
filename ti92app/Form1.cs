@@ -23,15 +23,11 @@ namespace ti92app
            //  Nivel.Atualizar(new Nivel(5, "Coordenador", "cdd"));          
 
            var nivel = Nivel.ObterPorId(2);
-           label1.Text = nivel.Id + " - " + nivel.Nome + " - " + nivel.Sigla;
+          // label1.Text = nivel.Id + " - " + nivel.Nome + " - " + nivel.Sigla;
 
             AtualizarListBox();                      
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnInsereNivel_Click(object sender, EventArgs e)
         {
@@ -66,6 +62,10 @@ namespace ti92app
             {
                 listBox1.Items.Add("ID: " +item.Id + " - NOME: " + item.Nome + " - SIGLA: " +item.Sigla);
             }
+            txtIdNivel.Clear();
+            txtNomeNivel.Clear();
+            txtSiglaNivel.Clear();
+            txtNomeNivel.Focus();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -88,6 +88,35 @@ namespace ti92app
                 txtNomeNivel.Focus();
                 btnEditar.Text = "Editar";
                 AtualizarListBox();
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+
+            // se txtBusca.Text for diferente de vazio
+            // e (&&) txtBusca.Text.Length for maior ou igual
+            if (txtBusca.Text != string.Empty && txtBusca.Text.Length >= 1)
+            {
+                listBox1.Items.Clear();
+                var niveis = Nivel.BuscarPorNome(txtBusca.Text);
+                if (niveis.Count > 0)
+                {
+                    foreach (var nivel in niveis)
+                    {
+                        listBox1.Items.Add(nivel.Id + " - " + nivel.Nome + " - " + nivel.Sigla);
+                    }
+                }
+                else
+                {
+
+                    listBox1.Items.Add("Não há registros para essa consulta...");
+                }
             }
         }
     }    

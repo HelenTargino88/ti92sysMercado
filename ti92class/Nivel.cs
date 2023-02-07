@@ -84,7 +84,29 @@ namespace ti92class
         }
         public bool Excluir(int _id)
         {
-            return true;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from niveis where id = "+_id;
+            bool result = cmd.ExecuteNonQuery()==1?true:false;
+            return result;
         }
+        public static List<Nivel> BuscarPorNome(string _parte)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from niveis where nome like '%"+_parte+"%' order by nome;";
+            var dr = cmd.ExecuteReader();
+            List<Nivel> lista = new List<Nivel>();
+            while (dr.Read())
+            {
+                lista.Add(new Nivel(
+                        dr.GetInt32(0),dr.GetString(1),dr.GetString(2)
+                    )
+                );
+            }
+            return lista;
+        }
+
+
     }
 }
