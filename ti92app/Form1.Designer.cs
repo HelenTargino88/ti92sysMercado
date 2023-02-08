@@ -40,7 +40,26 @@
             this.txtNomeNivel = new System.Windows.Forms.TextBox();
             this.txtIdNivel = new System.Windows.Forms.TextBox();
             this.txtBusca = new System.Windows.Forms.TextBox();
+            this.txtBuscaUsuario = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkAtivo = new System.Windows.Forms.CheckBox();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboNivelUSuario = new System.Windows.Forms.ComboBox();
+            this.btnExcluirUsuario = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnEditarUsuario = new System.Windows.Forms.Button();
+            this.txtNomeUsuario = new System.Windows.Forms.TextBox();
+            this.txtIdUsuario = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnInsereUsuario = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
@@ -48,7 +67,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(38, 267);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(281, 95);
+            this.listBox1.Size = new System.Drawing.Size(320, 95);
             this.listBox1.TabIndex = 1;
             // 
             // label2
@@ -153,15 +172,192 @@
             // 
             this.txtBusca.Location = new System.Drawing.Point(38, 241);
             this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(281, 20);
+            this.txtBusca.Size = new System.Drawing.Size(320, 20);
             this.txtBusca.TabIndex = 6;
             this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
+            // 
+            // txtBuscaUsuario
+            // 
+            this.txtBuscaUsuario.Location = new System.Drawing.Point(434, 328);
+            this.txtBuscaUsuario.Name = "txtBuscaUsuario";
+            this.txtBuscaUsuario.Size = new System.Drawing.Size(320, 20);
+            this.txtBuscaUsuario.TabIndex = 9;
+            this.txtBuscaUsuario.TextChanged += new System.EventHandler(this.txtBuscaUsuario_TextChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkAtivo);
+            this.groupBox2.Controls.Add(this.txtSenha);
+            this.groupBox2.Controls.Add(this.txtEmail);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.comboNivelUSuario);
+            this.groupBox2.Controls.Add(this.btnExcluirUsuario);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.btnEditarUsuario);
+            this.groupBox2.Controls.Add(this.txtNomeUsuario);
+            this.groupBox2.Controls.Add(this.txtIdUsuario);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.btnInsereUsuario);
+            this.groupBox2.Location = new System.Drawing.Point(434, 33);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(320, 289);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Usuário";
+            // 
+            // checkAtivo
+            // 
+            this.checkAtivo.AutoSize = true;
+            this.checkAtivo.Location = new System.Drawing.Point(64, 175);
+            this.checkAtivo.Name = "checkAtivo";
+            this.checkAtivo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkAtivo.Size = new System.Drawing.Size(15, 14);
+            this.checkAtivo.TabIndex = 21;
+            this.checkAtivo.UseVisualStyleBackColor = true;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(64, 123);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(100, 20);
+            this.txtSenha.TabIndex = 20;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(64, 97);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 173);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Ativo";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 123);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Senha";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 97);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Email";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 147);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Nivel";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // comboNivelUSuario
+            // 
+            this.comboNivelUSuario.FormattingEnabled = true;
+            this.comboNivelUSuario.Location = new System.Drawing.Point(64, 148);
+            this.comboNivelUSuario.Name = "comboNivelUSuario";
+            this.comboNivelUSuario.Size = new System.Drawing.Size(121, 21);
+            this.comboNivelUSuario.TabIndex = 12;
+            this.comboNivelUSuario.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // btnExcluirUsuario
+            // 
+            this.btnExcluirUsuario.Location = new System.Drawing.Point(220, 225);
+            this.btnExcluirUsuario.Name = "btnExcluirUsuario";
+            this.btnExcluirUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluirUsuario.TabIndex = 11;
+            this.btnExcluirUsuario.Text = "Excluir";
+            this.btnExcluirUsuario.UseVisualStyleBackColor = true;
+            this.btnExcluirUsuario.Click += new System.EventHandler(this.btnExcluirUsuario_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "ID";
+            // 
+            // btnEditarUsuario
+            // 
+            this.btnEditarUsuario.Location = new System.Drawing.Point(119, 225);
+            this.btnEditarUsuario.Name = "btnEditarUsuario";
+            this.btnEditarUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnEditarUsuario.TabIndex = 10;
+            this.btnEditarUsuario.Text = "Editar";
+            this.btnEditarUsuario.UseVisualStyleBackColor = true;
+            this.btnEditarUsuario.Click += new System.EventHandler(this.btnEditarUsuario_Click);
+            // 
+            // txtNomeUsuario
+            // 
+            this.txtNomeUsuario.Location = new System.Drawing.Point(64, 63);
+            this.txtNomeUsuario.Name = "txtNomeUsuario";
+            this.txtNomeUsuario.Size = new System.Drawing.Size(89, 20);
+            this.txtNomeUsuario.TabIndex = 8;
+            // 
+            // txtIdUsuario
+            // 
+            this.txtIdUsuario.Location = new System.Drawing.Point(64, 36);
+            this.txtIdUsuario.Name = "txtIdUsuario";
+            this.txtIdUsuario.ReadOnly = true;
+            this.txtIdUsuario.Size = new System.Drawing.Size(50, 20);
+            this.txtIdUsuario.TabIndex = 7;
+            this.txtIdUsuario.TextChanged += new System.EventHandler(this.txtIdUsuario_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "NOME";
+            // 
+            // btnInsereUsuario
+            // 
+            this.btnInsereUsuario.Location = new System.Drawing.Point(20, 225);
+            this.btnInsereUsuario.Name = "btnInsereUsuario";
+            this.btnInsereUsuario.Size = new System.Drawing.Size(75, 23);
+            this.btnInsereUsuario.TabIndex = 4;
+            this.btnInsereUsuario.Text = "Inserir";
+            this.btnInsereUsuario.UseVisualStyleBackColor = true;
+            this.btnInsereUsuario.Click += new System.EventHandler(this.btnInsereUsuario_Click);
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(434, 354);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(320, 95);
+            this.listBox2.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(949, 722);
+            this.Controls.Add(this.txtBuscaUsuario);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.txtBusca);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listBox1);
@@ -170,6 +366,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +386,24 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.TextBox txtBusca;
+        private System.Windows.Forms.TextBox txtBuscaUsuario;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboNivelUSuario;
+        private System.Windows.Forms.Button btnExcluirUsuario;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnEditarUsuario;
+        private System.Windows.Forms.TextBox txtNomeUsuario;
+        private System.Windows.Forms.TextBox txtIdUsuario;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnInsereUsuario;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox checkAtivo;
     }
 }
 

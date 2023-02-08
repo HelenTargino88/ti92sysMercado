@@ -64,7 +64,7 @@ namespace ti92class
             // 5 - Preencher o objeto List com o retorno do banco, se houver
             while (dr.Read()) // Enquanto houver um próximo registro
             {
-                lista.Add(new Usuario(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.Get(3), dr.GetString(4), dr.GetBoolean(5)));
+                lista.Add(new Usuario(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), Nivel.ObterPorId(dr.GetInt32(3)), dr.GetString(4), dr.GetBoolean(5)));
             }
             // retorna a lista preenchida
 
@@ -82,7 +82,7 @@ namespace ti92class
                 usuario.Id = dr.GetInt32(0);
                 usuario.Nome = dr.GetString(1);
                 usuario.Email = dr.GetString(2);
-                usuario.Nivel = dr.GetString(3);
+                usuario.Nivel = Nivel.ObterPorId(dr.GetInt32(3));
                 usuario.Senha = dr.GetString(4);
                 usuario.Ativo = dr.GetBoolean(5);
 
@@ -93,18 +93,38 @@ namespace ti92class
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update usuarios set nome = '"+ 
-                usuario.Nome +"', email = '"+usuario.Email+
-                "',email = '"+usuario.Nivel+
-                "'email = '"+usuario.Senha+,
-                "'email = '"+usuario.Ativo+
-                "'
-                "' where id = " + usuario.Id;
+            cmd.CommandText = "update usuarios set " +
+                "nome = '"+usuario.Nome +"'," +
+                "email = '"+usuario.Email+"'," +
+                "nivel = '"+usuario.Nivel+"'," +
+                "senha = '"+usuario.Senha+"'," +
+                "ativo = '"+usuario.Ativo+"' " +
+                "where id = "+usuario.Id;
             cmd.ExecuteReader();
         }
         public bool Excluir(int _id)
         {
-            return true;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from usuarios where id = " + _id;
+            bool result = cmd.ExecuteNonQuery() == 1 ? true : false;
+            return result;
+        }
+        public static List<Usuario> BuscarPorNome(string _parte)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from usuarios where nome like '%" + _parte + "%' order by nome;";
+            var dr = cmd.ExecuteReader();
+            List<Usuario> lista = new List<Usuario>();
+            while (dr.Read())
+            {
+                lista.Add(new Usuario(
+                        dr.GetInt32(0), dr.GetString(1), dr.GetString(2), Nivel.ObterPorId(dr.GetInt32(3)), dr.GetString(4), dr.GetBoolean(5)
+                    )
+                );
+            }
+            return lista;
         }
     }
 }

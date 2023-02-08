@@ -86,8 +86,8 @@ namespace ti92class
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from niveis where id = "+_id;
-            bool result = cmd.ExecuteNonQuery()==1?true:false;
+            cmd.CommandText = "delete from niveis where id = " + _id;
+            bool result = cmd.ExecuteNonQuery() == 1 ? true : false;
             return result;
         }
         public static List<Nivel> BuscarPorNome(string _parte)

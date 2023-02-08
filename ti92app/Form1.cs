@@ -20,14 +20,13 @@ namespace ti92app
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           //  Nivel.Atualizar(new Nivel(5, "Coordenador", "cdd"));          
+            comboNivelUSuario.DataSource = Nivel.Listar();
+            comboNivelUSuario.DisplayMember = "Nome";
+            comboNivelUSuario.ValueMember = "Id";
 
-           var nivel = Nivel.ObterPorId(2);
-          // label1.Text = nivel.Id + " - " + nivel.Nome + " - " + nivel.Sigla;
-
-            AtualizarListBox();                      
+            AtualizarListBox();
         }
-        
+
 
         private void btnInsereNivel_Click(object sender, EventArgs e)
         {
@@ -42,7 +41,7 @@ namespace ti92app
             txtNomeNivel.Focus();
         }
 
-        
+
 
         private void txtIdNivel_TextChanged(object sender, EventArgs e)
         {
@@ -60,12 +59,25 @@ namespace ti92app
             listBox1.Items.Clear();
             foreach (var item in list)
             {
-                listBox1.Items.Add("ID: " +item.Id + " - NOME: " + item.Nome + " - SIGLA: " +item.Sigla);
+                listBox1.Items.Add("ID: " + item.Id + " - NOME: " + item.Nome + " - SIGLA: " + item.Sigla);
             }
             txtIdNivel.Clear();
             txtNomeNivel.Clear();
             txtSiglaNivel.Clear();
             txtNomeNivel.Focus();
+
+            List<Usuario> lista = Usuario.Listar();
+            listBox2.Items.Clear();
+            foreach (var item in lista)
+            {
+                listBox2.Items.Add("ID: " + item.Id + " - NOME: " + item.Nome + " - EMAIL: " + item.Email + " - SENHA: " + item.Senha + " - ATIVO: " + item.Ativo);
+            }
+            txtIdUsuario.Clear();
+            txtNomeUsuario.Clear();
+            txtEmail.Clear();
+            txtSenha.Clear();
+            checkAtivo.Checked = true;
+            txtNomeUsuario.Focus();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -93,7 +105,16 @@ namespace ti92app
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (txtIdNivel.Text != string.Empty)
+            {
+                Nivel nivel = Nivel.ObterPorId(int.Parse(txtIdNivel.Text));
+                if (nivel.Excluir(nivel.Id))
+                {
+                    MessageBox.Show("Nível " + nivel.Nome + " excluído com sucesso!", "Exclusão de nível");
+                    AtualizarListBox();
+                }
 
+            }
         }
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
@@ -119,5 +140,113 @@ namespace ti92app
                 }
             }
         }
-    }    
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Usuários !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! /
+
+
+        private void btnInsereUsuario_Click(object sender, EventArgs e)
+        {
+
+            Usuario usuario = new Usuario(txtNomeUsuario.Text, txtEmail.Text, Nivel.(comboNivelUSuario.Text), txtSenha.Text, checkAtivo.Checked));
+            usuario.Inserir();
+            txtIdUsuario.Text = usuario.Id.ToString();
+            AtualizarListBox();
+            MessageBox.Show("Usuário inserido com sucesso! \n ID: " + usuario.Id.ToString());
+            txtIdUsuario.Clear();
+            txtNomeUsuario.Clear();
+            txtEmail.Clear();
+            txtSenha.Clear();
+            checkAtivo.Checked = true;
+            txtNomeUsuario.Focus();
+        }
+
+        private void btnEditarUsuario_Click(object sender, EventArgs e)
+        {
+            if (btnEditarUsuario.Text == "Editar")
+            {
+                txtIdUsuario.ReadOnly = false;
+                txtIdUsuario.Focus();
+                btnEditarUsuario.Text = "Gravar";
+                btnInsereUsuario.Enabled = false;
+            }
+            else
+            {
+                Usuario usuario = new Usuario();
+                usuario.Id = int.Parse(txtIdUsuario.Text);
+                usuario.Nome = txtNomeUsuario.Text;
+                usuario.Email = txtEmail.Text;
+                usuario.Senha = txtSenha.Text;
+                Usuario.Atualizar(usuario);
+                txtIdUsuario.ReadOnly = true;
+                txtNomeUsuario.Focus();
+                btnEditarUsuario.Text = "Editar";
+                AtualizarListBox();
+            }
+        }
+
+        private void btnExcluirUsuario_Click(object sender, EventArgs e)
+        {
+            if (txtIdUsuario.Text != string.Empty)
+            {
+                Usuario usuario = Usuario.ObterPorId(int.Parse(txtIdUsuario.Text));
+                if (usuario.Excluir(usuario.Id))
+                {
+                    MessageBox.Show("Usuário " + usuario.Nome + " excluído com sucesso!", "Exclusão de usuário");
+                    AtualizarListBox();
+                }
+            }
+        }
+
+        private void txtBuscaUsuario_TextChanged(object sender, EventArgs e)
+        {
+            // se txtBuscaUsuario.Text for diferente de vazio
+            // e (&&) txtBuscaUsuario.Text.Length for maior ou igual
+            if (txtBuscaUsuario.Text != string.Empty && txtBuscaUsuario.Text.Length >= 1)
+            {
+                listBox2.Items.Clear();
+                var usuarios = Usuario.BuscarPorNome(txtBuscaUsuario.Text);
+                if (usuarios.Count > 0)
+                {
+                    foreach (var usuario in usuarios)
+                    {
+                        listBox2.Items.Add(usuario.Id + " - " + usuario.Nome + " - " + usuario.Email + " - " + usuario.Senha + " - " + usuario.Nivel + " - " + usuario.Ativo);
+                    }
+                }
+                else
+                {
+
+                    listBox2.Items.Add("Não há registros para essa consulta...");
+                }
+            }
+
+        }
+
+        private void txtIdUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtIdUsuario.Text != string.Empty)
+            {
+                int id = int.Parse(txtIdUsuario.Text);
+                var usuario = Usuario.ObterPorId(id);
+                txtNomeUsuario.Text = usuario.Nome;
+                txtEmail.Text = usuario.Email;
+                txtSenha.Text = usuario.Senha;
+                checkAtivo.Checked = usuario.Ativo;
+            }
+        }
+    }
+
+
 }
+
+
