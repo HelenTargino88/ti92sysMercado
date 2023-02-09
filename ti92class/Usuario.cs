@@ -43,10 +43,11 @@ namespace ti92class
             // gravar um novo usuário na tabela usuários
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert usuarios (nome, email, nivel, senha, ativo) values ('" + Nome + "','" + Email + "','" + Nivel + "','" +Senha+"','"+Ativo+"')";
+            cmd.CommandText = "insert usuarios (nome, email, nivel, senha, ativo) values ('" + Nome + "','" + Email + "','" + Nivel.Id + "','" +Senha+"',"+Ativo+")";
             cmd.ExecuteNonQuery();
             cmd.CommandText = "select @@identity";
             Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
         }
         public static List<Usuario> Listar()
         {
@@ -58,13 +59,13 @@ namespace ti92class
             // 2 - Definir tipo de comando SQL(text/store prodedure)
             cmd.CommandType = System.Data.CommandType.Text;
             // 3 - Atribuir comando SQL
-            cmd.CommandText = "select * from usuarios order by nome asc";
+            cmd.CommandText = "select * from usuarios order by nome";
             // 4 - Executar o comando sql e armazenar o retorno do banco em um objeto MySqlDataReader
             var dr = cmd.ExecuteReader();
             // 5 - Preencher o objeto List com o retorno do banco, se houver
             while (dr.Read()) // Enquanto houver um próximo registro
             {
-                lista.Add(new Usuario(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), Nivel.ObterPorId(dr.GetInt32(3)), dr.GetString(4), dr.GetBoolean(5)));
+                lista.Add(new Usuario(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), Nivel.ObterPorId(dr.GetInt32(4)), dr.GetString(3), dr.GetBoolean(5)));
             }
             // retorna a lista preenchida
 
@@ -72,7 +73,7 @@ namespace ti92class
         }
         public static Usuario ObterPorId(int _id)
         {
-            Usuario usuario = new Usuario();
+            Usuario usuario = null;
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = "select * from usuarios where id = " + _id;

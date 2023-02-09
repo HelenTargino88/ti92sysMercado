@@ -157,7 +157,7 @@ namespace ti92app
         private void btnInsereUsuario_Click(object sender, EventArgs e)
         {
 
-            Usuario usuario = new Usuario(txtNomeUsuario.Text, txtEmail.Text, Nivel.(comboNivelUSuario.Text), txtSenha.Text, checkAtivo.Checked));
+            Usuario usuario = new Usuario(txtNomeUsuario.Text, txtEmail.Text, Nivel.ObterPorId((int)comboNivelUSuario.SelectedValue),txtSenha.Text, checkAtivo.Checked);
             usuario.Inserir();
             txtIdUsuario.Text = usuario.Id.ToString();
             AtualizarListBox();
@@ -224,8 +224,8 @@ namespace ti92app
                 }
                 else
                 {
-
                     listBox2.Items.Add("Não há registros para essa consulta...");
+
                 }
             }
 
@@ -244,9 +244,7 @@ namespace ti92app
                 checkAtivo.Checked = usuario.Ativo;
             }
         }
-    }
-
-
+    }   
 }
 
 
