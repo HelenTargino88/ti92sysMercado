@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace ti92app
 {
-    public partial class FrmLogin : Form
+    public partial class FrmEndereco : Form
     {
-        public FrmLogin()
+        public FrmEndereco()
         {
             InitializeComponent();
-        }
-
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

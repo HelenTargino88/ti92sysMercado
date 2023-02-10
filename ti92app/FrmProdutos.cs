@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ti92class;
 
 namespace ti92app
 {
@@ -45,6 +46,14 @@ namespace ti92app
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new Produto(
+                    TEXTDESCRICAO.Text, CMBUNIDADE.Text, TEXTCODBAR.Text, double.Parse(MSKPRECO.Text), double.Parse(MASKDESCONTO.Text));
+            produto.Inserir();
+            textId.Text = produto.Id.ToString();
         }
     }
 }
