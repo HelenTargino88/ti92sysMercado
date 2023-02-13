@@ -157,6 +157,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // Consultar
             // 
@@ -187,6 +188,7 @@
             this.Editar.Text = "Editar";
             this.Editar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Editar.UseVisualStyleBackColor = true;
+            this.Editar.Click += new System.EventHandler(this.Editar_Click);
             // 
             // btnAdicionar
             // 
@@ -280,7 +282,6 @@
             // dtgProdutos
             // 
             this.dtgProdutos.AllowUserToAddRows = false;
-            this.dtgProdutos.AllowUserToDeleteRows = false;
             this.dtgProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clnId,
@@ -294,8 +295,12 @@
             this.dtgProdutos.Name = "dtgProdutos";
             this.dtgProdutos.ReadOnly = true;
             this.dtgProdutos.RowHeadersVisible = false;
+            this.dtgProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgProdutos.Size = new System.Drawing.Size(700, 254);
             this.dtgProdutos.TabIndex = 1;
+            this.dtgProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProdutos_CellContentClick);
+            this.dtgProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProdutos_CellDoubleClick);
+            this.dtgProdutos.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dtgProdutos_UserDeletedRow);
             // 
             // clnId
             // 
@@ -311,6 +316,7 @@
             this.clmCodBar.HeaderText = "CODBAR";
             this.clmCodBar.Name = "clmCodBar";
             this.clmCodBar.ReadOnly = true;
+            this.clmCodBar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmCodBar.Width = 110;
             // 
             // clnDescricao
@@ -374,7 +380,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 679);
+            this.ClientSize = new System.Drawing.Size(845, 692);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dtgProdutos);
@@ -412,6 +418,8 @@
         private System.Windows.Forms.Label txtID;
         private System.Windows.Forms.DataGridView dtgProdutos;
         private System.Windows.Forms.Button Editar;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCodBar;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDescricao;
@@ -419,7 +427,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPreco;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDesconto;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chkAtivo;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Label label1;
     }
 }

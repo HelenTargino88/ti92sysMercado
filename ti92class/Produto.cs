@@ -75,6 +75,7 @@ namespace ti92class
         }
         public static Produto ObterPorId(int _id)
         {
+
             Produto produto = new Produto();
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
