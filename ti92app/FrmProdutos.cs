@@ -112,5 +112,10 @@ namespace ti92app
             Produto.Arquivar(id);
             FrmProdutos_Load(sender, e);
         }
+
+        private void Consultar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

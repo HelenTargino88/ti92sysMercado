@@ -173,6 +173,7 @@
             this.Consultar.Text = "Consultar";
             this.Consultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Consultar.UseVisualStyleBackColor = true;
+            this.Consultar.Click += new System.EventHandler(this.Consultar_Click);
             // 
             // Editar
             // 
