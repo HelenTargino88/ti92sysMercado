@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ti92class;
 
 namespace ti92app
 {
@@ -17,9 +18,12 @@ namespace ti92app
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdicionar_Click(object sender, EventArgs e)
         {
-
+            //Cliente cliente = new Cliente(
+            //    txtCpf.Text, txtDatacad.Text, txtNome.Text, txtEmail.Text);
+            //cliente.Inserir();
+            //txtId.Text = cliente.Id.ToString();
         }
     }
 }

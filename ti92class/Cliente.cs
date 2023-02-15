@@ -14,43 +14,57 @@ namespace ti92class
         public string Nome { get; set; }
         public string CPF { get; set; }
         public string Email { get; set; }
+        public List<Telefone> Telefones { get; set; }
+        public List<Endereco> Enderecos { get; set; }
         public DateTime DataCadastro { get; set; }
         public bool Ativo { get; set; }
 
         // Métodos construtores
-        public Cliente(int id, string nome, string cpf, string email, DateTime datacad, bool ativo)
+        public Cliente(int id, string nome, string cpf, string email, List<Telefone> telefone, List<Endereco> endereco, DateTime datacad, bool ativo)
         {
             Id = id;
             Nome = nome;
             CPF = cpf;
             Email = email;
+            Telefones = telefone;
+            Enderecos = endereco;
             DataCadastro = datacad;
             Ativo = ativo;
         }
 
-        public Cliente(string nome, string cpf, string email, DateTime datacad, bool ativo)
+        public Cliente(string nome, string cpf, string email, List<Telefone> telefone, List<Endereco> endereco, DateTime datacad, bool ativo)
         {
             Nome = nome;
             CPF = cpf;
             Email = email;
+            Telefones = telefone;
+            Enderecos = endereco;
             DataCadastro = datacad;
             Ativo = ativo;
         }
 
+        public Cliente(int id)
+        {
+           Telefones = ti92class.Telefone.ListarPorCliente(id);
+           Enderecos = ti92class.Endereco.ListarPorCliente(id);
+        }
         public Cliente() 
         { 
 
         }
 
+
         // Métodos da Classe
-     public void Inserir()
+        public void Inserir()
      {
          var cmd = Banco.Abrir();
          cmd.CommandType = CommandType.Text;
-         cmd.CommandText = "insert clientes (nome, cpf, email, datacad, Ativo) " +
+         cmd.CommandText = "insert clientes (nome, cpf, email, telefone, endereco, datacad, Ativo) " +
              "values ('" + Nome + "'," +
              "'" + CPF + "'," +
              "'" + Email + "'," +
+             "'" + Telefones + "',"+
+             "'" + Enderecos + "',"+
              " " + DataCadastro + " ," +
              " " + Ativo + ")";
          cmd.ExecuteNonQuery();
@@ -66,12 +80,12 @@ namespace ti92class
          var dr = cmd.ExecuteReader();
          while (dr.Read()) // Enquanto houver um próximo registro
          {
-             lista.Add(new Cliente(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetDateTime(4), dr.GetBoolean(5)));
+             lista.Add(new Cliente(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), Telefone.ListarPorCliente(dr.GetInt32(4)), Endereco.ListarPorCliente(dr.GetInt32(5)), dr.GetDateTime(6), dr.GetBoolean(7)));
          }
          // retorna a lista preenchida
          return lista;
      }
-       public static Cliente ObterPorId(int _id)
+       public static Cliente ObterPorCliente(int _id)
      {
 
          Cliente cliente = new Cliente();
@@ -85,8 +99,10 @@ namespace ti92class
              cliente.Nome = dr.GetString(1);
              cliente.CPF = dr.GetString(2);
              cliente.Email = dr.GetString(3);
-             cliente.DataCadastro = dr.GetDateTime(4);
-             cliente.Ativo = dr.GetBoolean(5);
+             cliente.Telefones = Telefone.ListarPorCliente(dr.GetInt32(4));
+             cliente.Enderecos = Endereco.ListarPorCliente(dr.GetInt32(5));
+             cliente.DataCadastro = dr.GetDateTime(6);
+             cliente.Ativo = dr.GetBoolean(7);
          }
          return cliente;
      }
@@ -122,7 +138,8 @@ namespace ti92class
                 "nome = '" + cliente.Nome + "'," +
                 "email = '" + cliente.Email + "'," +
                 "cpf = '" + cliente.CPF + "'," +
-                "email = '" + cliente.Email + "'," +
+                "telefone = '" + cliente.Telefones + "'," +
+                "endereco = '" + cliente.Enderecos + "'," +
                 "dataCadastro = '" + cliente.DataCadastro + "'," +
                 "ativo = '" + cliente.Ativo + "' " +
                 "where id = " + cliente.Id;
@@ -146,7 +163,7 @@ namespace ti92class
             while (dr.Read())
             {
                 lista.Add(new Cliente(
-                        dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetDateTime(4), dr.GetBoolean(5)
+                        dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), Telefone.ListarPorCliente(dr.GetInt32(4)), Endereco.ListarPorCliente(dr.GetInt32(5)), dr.GetDateTime(6), dr.GetBoolean(7)
                     )
                 );
             }
