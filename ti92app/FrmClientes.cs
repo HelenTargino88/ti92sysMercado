@@ -25,5 +25,18 @@ namespace ti92app
             //cliente.Inserir();
             //txtId.Text = cliente.Id.ToString();
         }
+
+        private void GBCliente_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void GBEnd_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void FrmClientes_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
