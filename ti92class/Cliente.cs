@@ -85,7 +85,7 @@ namespace ti92class
          // retorna a lista preenchida
          return lista;
      }
-       public static Cliente ObterPorCliente(int _id)
+       public static Cliente ObterPorId(int _id)
      {
 
          Cliente cliente = new Cliente();

@@ -22,7 +22,7 @@ namespace ti92app
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente(
-                txtCpf.Text, txtDatacad.Text, txtNome.Text, txtEmail.Text, txtTelefone1.Text, txtTelefone2.Text);
+                txtCpf.Text, DateTime(txtDatacad.Text), txtNome.Text, txtEmail.Text, txtTelefone1.Text, txtTelefone2.Text);
             cliente.Inserir();
             txtId.Text = cliente.Id.ToString();
         }
@@ -56,7 +56,7 @@ namespace ti92app
         {
             Cliente cliente = new Cliente(
             int.Parse(txtId.Text), txtNome.Text, txtCpf.Text, 
-            txtEmail.Text, txtDatacad.Text, chkAtivo.Checked
+            txtEmail.Text, DateTime.Parse(txtDatacad.Text), chkAtivo.Checked
                );
             cliente.Editar();
             MessageBox.Show("Cliente atualizado com sucesso!");
