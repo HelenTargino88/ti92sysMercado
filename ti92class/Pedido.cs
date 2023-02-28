@@ -61,11 +61,11 @@ namespace ti92class
             cmd.Parameters.Add("@client", MySqlDbType.Int32).Value = Cliente.Id;
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = Usuario.Id;
             cmd.ExecuteNonQuery();
-
-            cmd.CommandText = "update pedidos set hashcode = @hashcode+'(select @@identity)' where id = (select @@identity) ";
-            cmd.Parameters.Clear();
+            cmd.CommandText = "select @@identity";
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
             Random rand = new Random();
-            cmd.Parameters.Add("@hashcode", MySqlDbType.VarChar).Value = "P"+rand.Next(10001,99999).ToString();
+            string hash = "P" +Id+ rand.Next(10001, 99999);
+            cmd.CommandText = "update pedidos set hashcode = '" + hash + "' where id =" +Id;           
             cmd.ExecuteNonQuery();
         }
 
@@ -160,10 +160,6 @@ namespace ti92class
             var cmd = Banco.Abrir();
             cmd.CommandText = "update pedidos set  arquivado_em = null() where id = " +id;
             cmd.ExecuteNonQuery();
-        }
-        public double ObterTotal()
-        {
-            
-        }
+        }       
     }
 }

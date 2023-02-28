@@ -32,14 +32,13 @@ namespace ti92class
             Ativo = ativo;
         }
 
-        public Cliente(string nome, string cpf, string email, List<Telefone> telefone, List<Endereco> endereco, DateTime datacad, bool ativo)
+        public Cliente(string nome, string cpf, string email, List<Telefone> telefone, List<Endereco> endereco, bool ativo)
         {
             Nome = nome;
             CPF = cpf;
             Email = email;
             Telefones = telefone;
             Enderecos = endereco;
-            DataCadastro = datacad;
             Ativo = ativo;
         }
 

@@ -55,5 +55,12 @@ namespace ti92app
             frmClientes.MdiParent = this;
             frmClientes.Show();
         }
+
+        private void novoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            FrmPedido frmPedido = new FrmPedido();
+            frmPedido.MdiParent = this;
+            frmPedido.Show();
+        }
     }
 }
