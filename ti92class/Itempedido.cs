@@ -11,7 +11,7 @@ namespace ti92class
     public class Itempedido
     {
         public int Id { get; set; }
-        public Produto Produto { get; }
+        public Produto Produto { get; set; }
         public double Preco { get; set; }
         public double Quantidade { get; set; }
         public double Desconto { get; set; }
@@ -21,6 +21,14 @@ namespace ti92class
             Id = id;
             Produto = produto;
             Preco = preco;
+            Quantidade = quantidade;
+            Desconto = desconto;
+        }
+        public Itempedido(int id, Produto produto, double quantidade, double desconto)
+        {
+            Id = id;
+            Produto = produto;
+            Preco = produto.Preco;
             Quantidade = quantidade;
             Desconto = desconto;
         }
@@ -60,24 +68,24 @@ namespace ti92class
            var cmd = Banco.Abrir();
            cmd.CommandText = "select * from itempedido where pedido_id = " + pedido_id;
            var dr = cmd.ExecuteReader();
-           while (dr.Read())
-           {
+            while (dr.Read())
+            {
 
-                   iten.Id = dr.GetInt32(0);
-                   iten.Produto = Produto.ObterPorId(dr.GetInt32(2));
-                   iten.Preco = dr.GetDouble(3);
-                   iten.Quantidade = dr.GetDouble(4);
-                   iten.Desconto = dr.GetDouble(5);                   
-
+                iten.Id = dr.GetInt32(0);
+                iten.Produto = Produto.ObterPorId(dr.GetInt32(2));
+                iten.Preco = dr.GetDouble(3);
+                iten.Quantidade = dr.GetDouble(4);
+                iten.Desconto = dr.GetDouble(5);
+            }
                return iten;
        }
-       public void Adicionar(int pedido_id)
+       public void Adicionar()
        {
            var cmd = Banco.Abrir();
            cmd.CommandText = "insert itempedido (pedido_id, produto_id,preco,quantidade,desconto)" +
                "values(@pedido_id, @produto_id, @preco, @quantidade, @desconto)";
            cmd.Parameters.Clear();
-           cmd.Parameters.Add("@pedido_id", MySqlDbType.Int32).Value = pedido_id;
+           cmd.Parameters.Add("@pedido_id", MySqlDbType.Int32).Value = Id;
            cmd.Parameters.Add("@produto_id", MySqlDbType.Int32).Value = Produto.Id;
            cmd.Parameters.Add("@preco", MySqlDbType.Decimal).Value = Produto.Preco;
            cmd.Parameters.Add("@quantidade", MySqlDbType.Decimal).Value = Quantidade;

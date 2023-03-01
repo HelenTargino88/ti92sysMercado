@@ -65,6 +65,7 @@ namespace ti92class
             Id = Convert.ToInt32(cmd.ExecuteScalar());
             Random rand = new Random();
             string hash = "P" +Id+ rand.Next(10001, 99999);
+            Hashcode = hash;
             cmd.CommandText = "update pedidos set hashcode = '" + hash + "' where id =" +Id;           
             cmd.ExecuteNonQuery();
         }
