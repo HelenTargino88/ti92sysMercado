@@ -122,5 +122,15 @@ namespace ti92app
             }
             txtTotal.Text = total.ToString("##0.00");
         }
+
+        private void txtTotal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

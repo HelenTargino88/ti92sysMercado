@@ -87,13 +87,21 @@ namespace ti92class
          var dr = cmd.ExecuteReader();
          while (dr.Read()) // Enquanto houver um próximo registro
          {
-             lista.Add(new Cliente(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetDateTime(4), dr.GetBoolean(5)), Telefone.ListarPorCliente(dr.GetInt32(0)), Endereco.ListarPorCliente(dr.GetInt32(0)));
+             lista.Add(new Cliente(
+                 dr.GetInt32(0), 
+                 dr.GetString(1), 
+                 dr.GetString(2), 
+                 dr.GetString(3), 
+                 dr.GetDateTime(4), 
+                 dr.GetBoolean(5), 
+                 Telefone.ListarPorCliente(dr.GetInt32(0)), 
+                 Endereco.ListarPorCliente(dr.GetInt32(0))));
          }
          // retorna a lista preenchida
          return lista;
         }
        public static Cliente ObterPorId(int _id)
-     {
+        {
 
          Cliente cliente = new Cliente();
          var cmd = Banco.Abrir();

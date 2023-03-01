@@ -73,7 +73,7 @@ namespace ti92class
         }
         public static Usuario ObterPorId(int _id)
         {
-            Usuario usuario = null;
+            Usuario usuario = new Usuario();
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = "select * from usuarios where id = " + _id;
@@ -83,10 +83,9 @@ namespace ti92class
                 usuario.Id = dr.GetInt32(0);
                 usuario.Nome = dr.GetString(1);
                 usuario.Email = dr.GetString(2);
-                usuario.Nivel = Nivel.ObterPorId(dr.GetInt32(3));
-                usuario.Senha = dr.GetString(4);
+                usuario.Nivel = Nivel.ObterPorId(dr.GetInt32(4));
+                usuario.Senha = dr.GetString(3);
                 usuario.Ativo = dr.GetBoolean(5);
-
             }
             return usuario;
         }
@@ -121,7 +120,7 @@ namespace ti92class
             while (dr.Read())
             {
                 lista.Add(new Usuario(
-                        dr.GetInt32(0), dr.GetString(1), dr.GetString(2), Nivel.ObterPorId(dr.GetInt32(3)), dr.GetString(4), dr.GetBoolean(5)
+                        dr.GetInt32(0), dr.GetString(1), dr.GetString(2), Nivel.ObterPorId(dr.GetInt32(4)), dr.GetString(3), dr.GetBoolean(5)
                     )
                 );
             }

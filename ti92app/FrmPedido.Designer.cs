@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbDados = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbUsuario = new System.Windows.Forms.ComboBox();
@@ -55,10 +55,6 @@
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.dgvItens = new System.Windows.Forms.DataGridView();
-            this.txtTotal = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.clnSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +63,10 @@
             this.clnQtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTotal = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.grbDados.SuspendLayout();
             this.grbProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
@@ -310,45 +310,6 @@
             this.dgvItens.Size = new System.Drawing.Size(622, 150);
             this.dgvItens.TabIndex = 4;
             // 
-            // txtTotal
-            // 
-            this.txtTotal.AutoSize = true;
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(400, 647);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(108, 24);
-            this.txtTotal.TabIndex = 5;
-            this.txtTotal.Text = "TOTAL R$";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(514, 643);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 31);
-            this.textBox1.TabIndex = 6;
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Location = new System.Drawing.Point(553, 75);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 23);
-            this.btnNovo.TabIndex = 7;
-            this.btnNovo.Text = "+ Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.Color.Red;
-            this.lblStatus.Location = new System.Drawing.Point(651, 34);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(46, 25);
-            this.lblStatus.TabIndex = 8;
-            this.lblStatus.Text = "Sts";
-            // 
             // clnSeq
             // 
             this.clnSeq.Frozen = true;
@@ -383,8 +344,8 @@
             // 
             // clnPreco
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clnPreco.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clnPreco.DefaultCellStyle = dataGridViewCellStyle4;
             this.clnPreco.Frozen = true;
             this.clnPreco.HeaderText = "Preço R$";
             this.clnPreco.Name = "clnPreco";
@@ -401,8 +362,8 @@
             // 
             // clnDesconto
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clnDesconto.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clnDesconto.DefaultCellStyle = dataGridViewCellStyle5;
             this.clnDesconto.Frozen = true;
             this.clnDesconto.HeaderText = "Desconto";
             this.clnDesconto.Name = "clnDesconto";
@@ -411,13 +372,54 @@
             // 
             // clnTotal
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clnTotal.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clnTotal.DefaultCellStyle = dataGridViewCellStyle6;
             this.clnTotal.Frozen = true;
             this.clnTotal.HeaderText = "Total R$";
             this.clnTotal.Name = "clnTotal";
             this.clnTotal.ReadOnly = true;
             this.clnTotal.Width = 90;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.AutoSize = true;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(400, 647);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(108, 24);
+            this.txtTotal.TabIndex = 5;
+            this.txtTotal.Text = "TOTAL R$";
+            this.txtTotal.Click += new System.EventHandler(this.txtTotal_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(514, 643);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(120, 31);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(553, 75);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 7;
+            this.btnNovo.Text = "+ Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.Red;
+            this.lblStatus.Location = new System.Drawing.Point(651, 34);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(46, 25);
+            this.lblStatus.TabIndex = 8;
+            this.lblStatus.Text = "Sts";
             // 
             // FrmPedido
             // 
