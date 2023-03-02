@@ -48,6 +48,8 @@
             this.TEXTDESCRICAO = new System.Windows.Forms.TextBox();
             this.textId = new System.Windows.Forms.TextBox();
             this.dtgProdutos = new System.Windows.Forms.DataGridView();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.clnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCodBar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,8 +57,6 @@
             this.clnPreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProdutos)).BeginInit();
             this.SuspendLayout();
@@ -303,6 +303,22 @@
             this.dtgProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProdutos_CellDoubleClick);
             this.dtgProdutos.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dtgProdutos_UserDeletedRow);
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(82, 300);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(652, 20);
+            this.txtBuscar.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(31, 305);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "BUSCAR";
+            // 
             // clnId
             // 
             this.clnId.Frozen = true;
@@ -360,22 +376,6 @@
             this.chkAtivo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.chkAtivo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.chkAtivo.Width = 50;
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(82, 300);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(652, 20);
-            this.txtBuscar.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 305);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "BUSCAR";
             // 
             // FrmProdutos
             // 

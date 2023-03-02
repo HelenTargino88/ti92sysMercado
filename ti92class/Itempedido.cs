@@ -70,7 +70,6 @@ namespace ti92class
            var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-
                 iten.Id = dr.GetInt32(0);
                 iten.Produto = Produto.ObterPorId(dr.GetInt32(2));
                 iten.Preco = dr.GetDouble(3);

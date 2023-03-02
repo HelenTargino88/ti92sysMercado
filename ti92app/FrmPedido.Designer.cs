@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbDados = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbUsuario = new System.Windows.Forms.ComboBox();
@@ -67,6 +67,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.lblDesMax = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.grbDados.SuspendLayout();
             this.grbProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
@@ -151,6 +156,7 @@
             this.txtId.Size = new System.Drawing.Size(124, 31);
             this.txtId.TabIndex = 2;
             this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // grbProduto
             // 
@@ -158,6 +164,7 @@
             this.grbProduto.Controls.Add(this.txtDesconto);
             this.grbProduto.Controls.Add(this.label8);
             this.grbProduto.Controls.Add(this.label7);
+            this.grbProduto.Controls.Add(this.lblDesMax);
             this.grbProduto.Controls.Add(this.label6);
             this.grbProduto.Controls.Add(this.label5);
             this.grbProduto.Controls.Add(this.label4);
@@ -193,6 +200,7 @@
             this.txtDesconto.TabIndex = 13;
             this.txtDesconto.Text = "0";
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
             // 
             // label8
             // 
@@ -344,8 +352,8 @@
             // 
             // clnPreco
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clnPreco.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clnPreco.DefaultCellStyle = dataGridViewCellStyle10;
             this.clnPreco.Frozen = true;
             this.clnPreco.HeaderText = "Preço R$";
             this.clnPreco.Name = "clnPreco";
@@ -362,8 +370,8 @@
             // 
             // clnDesconto
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clnDesconto.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clnDesconto.DefaultCellStyle = dataGridViewCellStyle11;
             this.clnDesconto.Frozen = true;
             this.clnDesconto.HeaderText = "Desconto";
             this.clnDesconto.Name = "clnDesconto";
@@ -372,8 +380,8 @@
             // 
             // clnTotal
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clnTotal.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clnTotal.DefaultCellStyle = dataGridViewCellStyle12;
             this.clnTotal.Frozen = true;
             this.clnTotal.HeaderText = "Total R$";
             this.clnTotal.Name = "clnTotal";
@@ -421,11 +429,54 @@
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "Sts";
             // 
+            // lblDesMax
+            // 
+            this.lblDesMax.AutoSize = true;
+            this.lblDesMax.ForeColor = System.Drawing.Color.Red;
+            this.lblDesMax.Location = new System.Drawing.Point(552, 75);
+            this.lblDesMax.Name = "lblDesMax";
+            this.lblDesMax.Size = new System.Drawing.Size(0, 13);
+            this.lblDesMax.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(656, 587);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(173, 30);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(656, 555);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(173, 20);
+            this.textBox2.TabIndex = 11;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(656, 503);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(173, 20);
+            this.textBox3.TabIndex = 12;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(656, 529);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(173, 20);
+            this.textBox4.TabIndex = 13;
+            // 
             // FrmPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 779);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.textBox1);
@@ -486,5 +537,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnQtd;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
+        private System.Windows.Forms.Label lblDesMax;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

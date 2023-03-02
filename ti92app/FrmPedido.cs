@@ -13,6 +13,7 @@ namespace ti92app
 {
     public partial class FrmPedido : Form
     {
+        private double DescontoMax { get; set; }
         public FrmPedido()
         {
             InitializeComponent();
@@ -67,6 +68,16 @@ namespace ti92app
                     txtDescricao.Text = produto.Descricao;
                     txtUnid.Text = produto.Unidade;
                     txtPreco.Text = produto.Preco.ToString();
+                    if (produto.Desconto > 0)
+                    {
+                        DescontoMax = produto.Desconto * produto.Preco;
+                        lblDesMax.Text = DescontoMax.ToString("##0.00");
+                        txtDesconto.Enabled = true;
+                    }
+                    else
+                    {
+                        txtDesconto.Enabled = false;
+                    }
                 }
                 else
                 {
@@ -78,6 +89,7 @@ namespace ti92app
                 txtDescricao.Clear();
                 txtUnid.Clear();
                 txtPreco.Clear();
+                lblDesMax.Text = "";
             }
         }
 
@@ -98,6 +110,7 @@ namespace ti92app
             item.Adicionar();
             AtualizaDataGrid(int.Parse(txtId.Text));
         }
+
         public void AtualizaDataGrid(int id)
         {
             dgvItens.Rows.Clear();
@@ -131,6 +144,46 @@ namespace ti92app
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtDesconto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+            if (txtId.Text != string.Empty)
+            {
+                Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
+                if (produto.Id > 0)
+                {
+                    txtDescricao.Text = produto.Descricao;
+                    txtUnid.Text = produto.Unidade;
+                    txtPreco.Text = produto.Preco.ToString();
+                    if (produto.Desconto > 0)
+                    {
+                        DescontoMax = produto.Desconto * produto.Preco;
+                        lblDesMax.Text = DescontoMax.ToString("##0.00");
+                        txtDesconto.Enabled = true;
+                    }
+                    else
+                    {
+                        txtDesconto.Enabled = false;
+                    }
+                }
+                else
+                {
+                    txtDescricao.Text = "***** Pedido não cadastrado! *****";
+                }
+                }
+                else
+                {
+                    txtDescricao.Clear();
+                    txtUnid.Clear();
+                    txtPreco.Clear();
+                    lblDesMax.Text = "";
+                }
         }
     }
 }

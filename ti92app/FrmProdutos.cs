@@ -77,18 +77,17 @@ namespace ti92app
             CMBUNIDADE.Text = dtgProdutos.Rows[e.RowIndex].Cells[3].Value.ToString();
             MSKPRECO.Text = dtgProdutos.Rows[e.RowIndex].Cells[4].Value.ToString();
             MASKDESCONTO.Text = dtgProdutos.Rows[e.RowIndex].Cells[5].Value.ToString();
-            chkDescontinuado.Checked = Convert.ToBoolean(dtgProdutos.Rows[e.RowIndex].Cells[6].Value); ;
+            chkDescontinuado.Checked = Convert.ToBoolean(dtgProdutos.Rows[e.RowIndex].Cells[6].Value);
             chkDescontinuado.Enabled = true;
-
         }
 
         private void Editar_Click(object sender, EventArgs e)
         {
             Produto produto = new Produto(
-            int.Parse(textId.Text),                
-                TEXTDESCRICAO.Text,                
-                CMBUNIDADE.Text,
+            int.Parse(textId.Text),
                 TEXTCODBAR.Text,
+                TEXTDESCRICAO.Text,                
+                CMBUNIDADE.Text,                
                 double.Parse(MSKPRECO.Text),
                 double.Parse(MASKDESCONTO.Text),
                 chkDescontinuado.Checked);
